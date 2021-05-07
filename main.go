@@ -26,7 +26,7 @@ var (
 func init() {
 	labelname = flag.String("label-name","","name of pod label to filter on")
 	labelvalue = flag.String("label-value","","value corresponding to pod label name")
-	listenaddr = flag.String("metrics-listen-addr","","name of pod label to filter on")
+	listenaddr = flag.String("metrics-listen-addr","8080","name of pod label to filter on")
 	// check if home directory is not empty then set kubeconfig in home directory
 	if home := homedir.HomeDir(); home != "" {
 		kubeconfig = flag.String("kubeconfig", filepath.Join(home, ".kube", "config"), "name of pod label to filter on")
@@ -40,7 +40,7 @@ func main() {
 	flag.Parse()
 	updatePodCounts()
 	http.Handle("/metrics", promhttp.Handler())
-	log.Print("Starting prometheus server on localhost:" + string(*listenaddr))
+	log.Print("Starting prometheus server on localhost:" + *listenaddr)
 	log.Fatal(http.ListenAndServe(":" + *listenaddr, nil))
 	
 }

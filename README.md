@@ -22,9 +22,21 @@ kube-system       kube-scheduler-minikube            1/1     Running   0        
 kube-system       storage-provisioner                1/1     Running   1          46h
 ```
 
-Run command go run main.go -label-name <label_name> -label-value <label_value> -metrics-listen-addr <prometheus_server_port> -kubeconfig <kubeconfig_path>
+Usage
+```
+go run main.go -hUsage of /var/folders/x6/vkjzrmn17bx99b4bd75z049m0000gn/T/go-build267501184/b001/exe/main:
+  -kubeconfig string
+        name of pod label to filter on (default "/Users/<user>/.kube/config")
+  -label-name string
+        name of pod label to filter on
+  -label-value string
+        value corresponding to pod label name
+  -metrics-listen-addr string
+        name of pod label to filter on
+```
 
-Example output below
+
+Example below
 ```
 go run main.go -label-name app -label-value demo-app -metrics-listen-addr 8080
 2021/05/06 20:48:40 Setting kubeconfig to set kubernetes environment

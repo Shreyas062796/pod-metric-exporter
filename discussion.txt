@@ -1,0 +1,18 @@
+1. An alternate approach to polling periodically is that you can maybe only get the pods when
+somebody calls the metrics api. This would reduce the number of api calls that we make to the
+kubernetes api which would be good. We can also use some go routines and channels with this so
+that if there are multiple api calls happening at the sametime we can concurrently run them.
+
+2. I would probably have to modify my program because right now I just have filtering by labels.
+We would have to add some conditional logic if we have multiple things that we can look for other
+than just the label selector. We may also need to make the command line arguments a bit more general
+as well or add more flags for different kinds of filters.
+
+3. I would test my code by writing test cases that would test the outputs that we get for different
+functions that we have. We would want to test for both the positive cases and make sure that we hit
+all the conditionals in the code and remove any unnecessary logic that doesn't make sense. I would
+probably make things more modular and seperate some of the logic into other functions. The part that
+I would prioritize would be the function that gets the pods from the kubernetes api and the one that
+would be setting the prometheus gauge metric. But I would try to test all the diffrent functions and
+make sure that my code coverage is high and that I have done my best at trying to test all my possible
+inputs as possible.
