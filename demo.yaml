@@ -1,0 +1,50 @@
+# ================================================== # ------------------ Staging Pods ------------------ # ================================================== ---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: demo-app
+  labels:
+    app: demo-app
+  namespace: demo-staging
+spec:
+  containers:
+    - name: demo
+      image: k8s.gcr.io/echoserver:1.4
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: demo-db
+  namespace: demo-staging
+  labels:
+    app: demo-db
+spec:
+  containers:
+    - name: demo
+      image: k8s.gcr.io/echoserver:1.4
+# ==================================================
+# ---------------- Production Pods -----------------
+# ================================================== ---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: demo-app
+  labels:
+    app: demo-app
+  namespace: demo-production
+spec:
+  containers:
+    - name: demo
+      image: k8s.gcr.io/echoserver:1.4
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: demo-db
+  namespace: demo-production
+  labels:
+    app: demo-db
+spec:
+  containers:
+    - name: demo
+      image: k8s.gcr.io/echoserver:1.4
