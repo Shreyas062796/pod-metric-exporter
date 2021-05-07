@@ -1,3 +1,7 @@
+Documentation is in README.md
+
+Discussion Questions
+
 1. An alternate approach to polling periodically is that you can maybe only get the pods when
 somebody calls the metrics api. This would reduce the number of api calls that we make to the
 kubernetes api which would be good. We can also use some go routines and channels with this so
